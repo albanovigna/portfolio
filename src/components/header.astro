@@ -2,22 +2,34 @@
 import { Icon } from "astro-icon";
 import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
+import { Picture } from "@astrojs/image/components";
+import albanoImage from "~/assets/albano.png"
 
 const navItems: Array<NavItem> = [
   { title: "Features", url: "#features" },
   { title: "Compatibility", url: "#compatibility" },
   { title: "Showcase", url: "#showcase" },
 ];
+
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+  class="absolute invisible bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
 >
-  <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Astro</h1>
+  <a class="flex items-center justify-center overflow-hidden bg-red-500 rounded-full w-12 h-12 gap-3 hover:!text-default" href="#">
+    <Picture
+        class="h-full w-full object-cover"
+        src={albanoImage}
+        widths={[48, 48]}
+        height={48}
+        loading="eager"
+        alt="A floating astronaut in a space suit"
+    >
+    </Picture>
+    <!-- <h1 class="sr-only">Astro</h1>
     <Icon name="logomark" class="h-10" />
-    <Icon name="wordmark" class="hidden h-4 sm:block" />
+    <Icon name="wordmark" class="hidden h-4 sm:block" /> -->
   </a>
   <div>
     <div class="flex items-center gap-6">
@@ -90,6 +102,7 @@ const navItems: Array<NavItem> = [
   const menu = document.querySelector(`#${menuModalId} ul`);
   const openNavButton = document.querySelector("#open-nav-button");
   const closeNavButton = document.querySelector("#close-nav-button");
+  const introSection = document.querySelector("#intro") as HTMLElement;
 
   invariant(header, "header should not be null");
   invariant(menu, "menu should not be null");
@@ -128,8 +141,12 @@ const navItems: Array<NavItem> = [
 </noscript>
 
 <style>
+  .fixed-header-begin{
+    @apply relative visible bottom-auto top-0;
+    @apply border-default bg-default text-default;
+  }
   .fixed-header {
-    @apply fixed bottom-auto top-0;
+    @apply fixed visible bottom-auto top-0;
     @apply border-default bg-default text-default;
   }
   .modal.is-open {
