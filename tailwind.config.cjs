@@ -23,6 +23,10 @@ module.exports = {
         default: "var(--color-border)",
       },
     },
+    screens: {
+      'xs': '320px',
+      ...defaultTheme.screens,
+    },
   },
   corePlugins: {
     fontSize: false,
