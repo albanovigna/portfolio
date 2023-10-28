@@ -12,7 +12,7 @@ const widths = [450, 800];
 const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
 ---
 
-<a class="group aspect-video hover:!text-default" href={site.url}>
+<a class="group aspect-video hover:!text-default" href={site.url} target="_blank">
   <figure class="relative h-full w-full overflow-hidden">
     <Picture
       class="h-full w-full bg-cover object-cover transition-all duration-300 group-hover:scale-110 group-hover:opacity-20 group-focus:scale-110 group-focus:opacity-20"
@@ -28,7 +28,7 @@ const sizes = "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw";
         <h3 class="text-center font-extrabold uppercase text-xl">
           {site.title}
         </h3>
-        <p class="border border-current px-4 py-2">{site.url}</p>
+        <p class="border border-current overflow-x-hidden whitespace-nowrap overflow-ellipsis max-w-[90%] px-3 py-2 mx-4  ">{site.url}</p>
       </div>
     </figcaption>
   </figure>
